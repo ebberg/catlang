@@ -5,6 +5,7 @@ from inspect import getargspec
 
 print("NANANANANANANANA CATLANG")
 
+# Stores the state of the execution.
 stack = []
 
 toylang = {
@@ -16,13 +17,29 @@ toylang = {
         '*': lambda a, b: int(a)*int(b),
         '/': lambda a, b: int(a)/int(b),
 }
-lang = toylang
+
+forthlike = {
+        'dup': lambda a: [a, a],
+        'drop': lambda:print(pop()),
+        'swap': lambda a, b: [b, a],
+        'over': lambda a, b: [a, b, a],
+        'rot': lambda a, b, c: [b, c, a],
+}
+
+procedures = {
+        #v.0.0.3
+}
+
+# lang is composed of nested scopes of names.
+lang = [toylang, forthlike, procedures]
 
 def lookup(word):
-    try:
-        return lang[word]
-    except KeyError:
-        return None
+    for scope in reversed(lang):
+        try:
+            return scope[word]
+        except KeyError:
+            pass
+    return None
 
 def push(word):
     stack.append(word)
@@ -59,8 +76,11 @@ while True:
     try:
         interpret_words(parse_line(raw_input('>_> ')))
         execute('stack')
+    except EOFError:
+        print("\ngoodbye cat says SIGQUIT")
+        break
     except KeyboardInterrupt:
+        print("\ngoodbye cat says SIGINT")
         break
 
-print("\ngoodbye cat says SIGTERM")
 
