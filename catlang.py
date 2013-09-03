@@ -34,9 +34,15 @@ def execute():
     pass
 
 def parse_line(line):
-    pass
+    return line.split(' ')
 
 def execute_words(words):
-    pass
+    print(words)
+
+while True:
+    try:
+        execute_words(parse_line(raw_input('>_> ')))
+    except KeyboardInterrupt:
+        break
 
 print("\ngoodbye cat says SIGTERM")
