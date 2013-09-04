@@ -12,10 +12,10 @@ toylang = {
         'pop': lambda:print(pop()),
         'peek': lambda:print(peek()),
         'stack': lambda:print(stack),
-        '+': lambda a, b: float(a)+float(b),
-        '-': lambda a, b: float(a)-float(b),
-        '*': lambda a, b: float(a)*float(b),
-        '/': lambda a, b: float(a)/float(b),
+        '+': lambda a, b: int(a)+int(b),
+        '-': lambda a, b: int(a)-int(b),
+        '*': lambda a, b: int(a)*int(b),
+        '/': lambda a, b: int(a)/int(b),
 }
 
 forthlike = {
