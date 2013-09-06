@@ -42,6 +42,17 @@ def lookup(word):
     return None
 
 def push(word):
+    """
+    refactor plan:
+    - push checks if word is a list or a tuple.
+
+    - if it's a tuple or a list, it pushes each item in the tuple on one at a
+      time.
+
+    - if it's an executable word, execute(word).
+
+    - otherwise, push the word.
+    """
     stack.append(word)
 
 def peek():
@@ -66,6 +77,12 @@ def parse_line(line):
     return line.split(' ')
 
 def interpret_words(words):
+    """
+    refactor plan:
+
+    - just push the word. push itself should decide if there should be an
+      append or an execute.
+    """
     for w in words:
         if lookup(w):
             execute(w)
