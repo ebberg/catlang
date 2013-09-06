@@ -1,4 +1,4 @@
-catlang v0.0.1: a toy stack-based language
+catlang v0.0.2: a toy stack-based language
 ==========================================
 
 Hi! This is Catlang! It is a stack-based programming language!
@@ -54,10 +54,40 @@ Then you can do some basic math.
     >_> 3 -
     >_> 6 2 + /
 
+You can also pop on very primitive procedures
+
+    >_> 3 3 [ + ] [ - ]
+
+| [ - ] |
+| [ + ] |
+| 3     |
+| 3     |
+---------
+
+If statements also work, in form:
+
+    [ true_branch ] [ false_branch ] true_or_false_value if
+
+    >_> 3 3 [ + ] [ - ] true if 
+
+| 6 |
+-----
+
+    >_> 3 3 [ + ] [ - ] false if 
+
+| 0 |
+-----
+
 That's about it.
+
+Changelog
+---------
+
+- v0.0.2: Procedures, if statement
 
 Planned
 -------
 
-- v0.0.2: functions can push multiple words onto the stack
-- v0.0.3: procedures
+- Refactor parser
+- While loops
+- Nested procedures
